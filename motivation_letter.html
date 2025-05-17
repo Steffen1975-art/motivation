@@ -1,1 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivationsschreiben - Steffen Koller</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            background-color: #f3f4f6;
+            line-height: 1.6; /* Verbesserte Lesbarkeit für längere Texte */
+        }
+
+        .letter-container {
+            max-width: 210mm; /* A4 Breite */
+            min-height: 297mm; /* A4 Höhe für Druck-Layout-Orientierung */
+            margin: 2rem auto;
+            padding: 25mm 20mm; /* Standard-Brief Ränder */
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            color: #374151; /* Standard Textfarbe (etwas dunkleres Grau) */
+        }
+
+        /* Farben angelehnt an Salesforce CI */
+        .letterhead h1 {
+            color: #0070D2; /* Salesforce Blau für den Namen */
+            font-size: 1.75rem; /* 28px */
+            margin-bottom: 0.25rem;
+        }
+
+        .letterhead p {
+            font-size: 0.875rem; /* 14px */
+            color: #4B5563; /* Dunkelgrau für Kontaktdetails */
+            margin-bottom: 0.125rem;
+        }
+        
+        .recipient-address p, .date p {
+            font-size: 0.9rem; /* 14.4px */
+            margin-bottom: 0.1rem;
+        }
+
+        .subject-line {
+            font-weight: 600;
+            color: #001639; /* Salesforce Dunkelblau */
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem; /* 17.6px */
+        }
+
+        .letter-body p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem; /* 15.2px */
+        }
+
+        .salutation, .closing {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .signature-block {
+            margin-top: 2rem;
+        }
+        .signature-block img {
+            height: 40px; /* Höhe der Unterschrift */
+            margin-bottom: 0.25rem;
+        }
+        .signature-block p {
+            font-size: 0.95rem;
+        }
+
+        .button-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .action-button {
+            background-color: #0070D2; /* Salesforce Blau */
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.15s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        .action-button:hover {
+            background-color: #005FB8; /* Dunkleres Salesforce Blau */
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+                font-size: 10pt; /* Angepasste Schriftgröße für Druck */
+            }
+            .letter-container {
+                margin: 0 auto;
+                padding: 20mm 15mm; /* Druckränder */
+                box-shadow: none;
+                max-width: 100%;
+                min-height: 0; 
+            }
+            .button-container {
+                display: none !important;
+            }
+            .letter-body p, .salutation, .closing, .recipient-address p, .date p, .subject-line, .signature-block p {
+                font-size: 10pt !important; /* Konsistente Schriftgröße im Druck */
+            }
+            .letterhead h1 {
+                font-size: 16pt !important;
+            }
+             .letterhead p {
+                font-size: 9pt !important;
+            }
+            .lang-element:not(.active-lang-print) {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button id="printButton" onclick="preparePrint()" class="action-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a8.5 8.5 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03-.48.062-.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0c1.253 1.253 1.253 3.275 0 4.528C17.001 23.05 16.204 24 12.688 24c-3.516 0-4.313-.95-4.975-1.472A4.5 4.5 0 0 1 6.34 18m11.318 0-1.096 1.096M6.34 18l-1.096 1.096m0 0a4.5 4.5 0 0 1-1.096-1.096M17.66 18a4.5 4.5 0 0 0 1.096-1.096M12 9.75l3 3m0 0-3 3m3-3h-6m1.5-4.5H7.5V4.5h9V9.75Z" />
+            </svg>
+            <span class="lang-element" lang="de">Drucken</span>
+            <span class="lang-element" lang="en" style="display:none;">Print</span>
+        </button>
+        <button id="toggleLangButton" onclick="toggleLanguage()" class="action-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C13.18 7.061 14.289 7.5 15.5 7.5c1.21 0 2.32-.439 3.166-1.136M15.5 7.5V3m-3.334 2.364c1.12 0 2.233.038 3.334.114m-6.002 0l.15-.04a28.456 28.456 0 00-2.634-2.13M9 15.188c1.12 0 2.233-.038 3.334-.114M12.334 15.074c.527-.07.99-.144 1.437-.226M12.334 15.074V18m2.166-2.724c.527.07.99.144 1.437.226m0 0c1.12.076 2.233.15 3.334.226m-6.333 0l-.15.04a28.456 28.456 0 01-2.634 2.13M12.334 18V15.074" />
+            </svg>
+            <span class="lang-element" lang="de">English</span>
+            <span class="lang-element" lang="en" style="display:none;">Deutsch</span>
+        </button>
+    </div>
+
+    <div class="letter-container">
+        <div class="letterhead mb-8">
+            <h1>Steffen Koller</h1>
+            <p><span class="lang-element" lang="de">Kehlstraße 3 | 73257 Köngen</span><span class="lang-element" lang="en" style="display:none;">Kehlstrasse 3 | 73257 Koengen</span></p>
+            <p>+49 176 105 197 03 | steffen.s.koller@gmail.com</p>
+        </div>
+
+        <div class="date mb-6">
+            <p><span class="lang-element" lang="de">17. Mai 2025</span><span class="lang-element" lang="en" style="display:none;">May 17, 2025</span></p>
+        </div>
+
+        <div class="recipient-address mb-6">
+            <p>Salesforce Recruiting Team</p>
+            <p>(<span class="lang-element" lang="de">Adresse von Salesforce</span><span class="lang-element" lang="en" style="display:none;">Salesforce Address</span>)</p>
+            <p>(<span class="lang-element" lang="de">Ort, PLZ</span><span class="lang-element" lang="en" style="display:none;">City, Postal Code</span>)</p>
+        </div>
+
+        <div class="subject-line">
+            <p>
+                <strong class="lang-element" lang="de">Bewerbung als Principal/Lead Solution Engineer - Automotive Industry - JR294460</strong>
+                <strong class="lang-element" lang="en" style="display:none;">Application for Principal/Lead Solution Engineer - Automotive Industry - JR294460</strong>
+            </p>
+        </div>
+
+        <div class="salutation">
+            <p>
+                <span class="lang-element" lang="de">Sehr geehrtes Salesforce Recruiting-Team,</span>
+                <span class="lang-element" lang="en" style="display:none;">Dear Salesforce Hiring Team,</span>
+            </p>
+        </div>
+
+        <div class="letter-body">
+            <div class="lang-element" lang="de">
+                <p>in den vergangenen sieben Jahren war ich nicht nur ein engagierter Anwender und Verfechter der Salesforce-Lösungen bei Mercedes-Benz, sondern auch ein enger Partner Ihres außergewöhnlichen Teams. Diese Reise, geprägt von gemeinsamen Erfolgen und einem fantastischen Teamgeist, hat meine Bewunderung für die Innovationskraft von Salesforce und seinen transformativen Einfluss auf Kundenbeziehungen nachhaltig vertieft. Die Position als Principal/Lead Solution Engineer für die Automobilindustrie (JR294460) fühlt sich wie das perfekte nächste Kapitel in dieser Geschichte an, und ich bin unglaublich gespannt auf die Aussicht, meine Leidenschaft und Expertise direkt bei Salesforce einzubringen.</p>
+                <p>Meine Begeisterung für Salesforce, CRM und das aufstrebende Potenzial von KI ist nicht nur beruflicher Natur, sondern ein echtes persönliches Interesse. Aus erster Hand zu erleben, wie Salesforce-Produkte den Erfolg vorantreiben und komplexe Prozesse optimieren, war eine ständige Quelle der Inspiration. Die gemeinsamen Projekte haben meinen Glauben an das perfekt durchdachte Produktkonzept und die zukunftsorientierte Vision von Salesforce immer wieder bestärkt. Die Aussicht, diese Vision von innen heraus mitzugestalten und dabei meine Erkenntnisse aus unserer erfolgreichen Partnerschaft zu nutzen, ist überaus reizvoll.</p>
+                <p>In meinen Rollen als Program Owner & Solution Manager bei Mercedes-Benz habe ich die strategische Führung, das Lösungsdesign und die Implementierung komplexer, europaweiter Salesforce-basierter CRM-Programme über Sales, Service, Marketing, Experience und Data Cloud verantwortet. Dies umfasste die Unterstützung verschiedener Vertriebsmodelle (Agentur und Retail), die Abdeckung umfassender Sales-, After-Sales- und Finance-Use-Cases sowie eine tiefe POS-Integration – eine Landschaft, die derzeit von über 5.000 Anwendern genutzt wird und in diesem Jahr durch weitere Go-Lives die Marke von 10.000 Anwendern überschreiten soll. Ich bin versiert darin, Geschäftsziele in umsetzbare Salesforce-Lösungen zu übersetzen und verfüge über eine nachgewiesene Erfolgsbilanz bei der Abbildung komplexer Geschäftsprozesse auf der Plattform, stets mit höchster Kundenzufriedenheit als oberstem Prinzip. Meine umfassende Erfahrung in der Automobilbranche, gepaart mit meiner Fähigkeit, groß angelegte Transitionen zu managen und Effizienzsteigerungen zu erzielen (wie die ca. 40%ige Steigerung bei einer kürzlichen Transition eines Entwicklungsteams), steht in direktem Einklang mit den Anforderungen dieser Position.</p>
+                <p>Das Engagement von Salesforce im Bereich KI, insbesondere mit Innovationen wie Agentforce, findet großen Anklang bei meinen eigenen Überzeugungen über die Zukunft von CRM. Ich glaube, dass KI die bereits immense Leistungsfähigkeit der Salesforce-Plattform exponentiell vervielfachen und ein beispielloses Maß an Kundenverständnis und operativer Exzellenz ermöglichen wird. Ich habe mich aktiv mit KI-Anwendungen auseinandergesetzt und sogar ein Hochschulprojekt zu generativen/prädiktiven KI-Anwendungsfällen geleitet. Ich brenne darauf, an vorderster Front bei der Integration dieser Technologien dabei zu sein, um den Salesforce-Kunden einen noch größeren Mehrwert zu bieten. Salesforce ist ein wirklich zukunftsorientiertes, nachhaltiges und vielversprechendes Unternehmen, und ich bin überzeugt, dass es weiterhin eine entscheidende Rolle bei der Transformation des aktuellen Wirtschaftsgeschehens spielen wird.</p>
+                <p>Ich glaube, Salesforce braucht Menschen wie mich – Persönlichkeiten, die nicht nur über tiefgreifende technische und branchenspezifische Expertise verfügen, sondern auch als vertrauenswürdige Berater fungieren können, die die vielfältigen Vorteile der Plattform maßgeschneidert und nachvollziehbar erklären. Meine siebenjährige Zusammenarbeit mit Ihren Kollegen hat mir eine einzigartige Perspektive darauf eröffnet, wie der Mehrwert von Salesforce für Kunden aus der Automobilindustrie am besten vermittelt werden kann. Ich bin zuversichtlich, dass ich mich schnell einarbeiten, zum renommierten Teamgeist beitragen und helfen kann, Lösungen zu entwickeln, die den Erfolg Ihrer Kunden spürbar vorantreiben.</p>
+            </div>
+            <div class="lang-element" lang="en" style="display:none;">
+                <p>For the past seven years, I've not only been a dedicated user and advocate of Salesforce solutions within Mercedes-Benz but also a close collaborator with your exceptional team. This journey, filled with shared successes and a fantastic team spirit, has profoundly deepened my admiration for Salesforce's innovative power and its transformative impact on customer relationships. The Principal/Lead Solution Engineer role for the Automotive Industry (JR294460) feels like the perfect next chapter in this story, and I'm incredibly excited by the prospect of bringing my passion and expertise directly into the Salesforce fold.</p>
+                <p>My enthusiasm for Salesforce, CRM, and the burgeoning potential of AI isn't just professional; it's a genuine personal interest. Witnessing firsthand how Salesforce products drive success and streamline complex processes has been a constant source of inspiration. The collaborative projects we've undertaken have consistently reinforced my belief in Salesforce's perfectly thought-out product concept and its future-oriented vision. The prospect of contributing to this vision from within, leveraging my insights gained from our successful partnership, is a compelling one.</p>
+                <p>In my roles as Program Owner & Solution Manager at Mercedes-Benz, I've spearheaded the strategic leadership, solution design, and implementation of complex, Europe-wide Salesforce-based CRM programs across Sales, Service, Marketing, Experience, and Data Cloud. This involved supporting diverse sales models (agency and retail), covering comprehensive Sales, After Sales, and Finance use cases, and ensuring deep POS integration – a landscape currently serving over 5,000 users and targeted to exceed 10,000 this year with further go-lives. I am adept at translating business objectives into actionable Salesforce solutions and have a proven track record of mapping intricate business processes onto the platform, always with the highest customer satisfaction as the guiding principle. My extensive experience in the automotive sector, coupled with my ability to manage large-scale transitions and drive efficiency (such as the ~40% increase during a recent development team transition), aligns directly with the requirements of this role.</p>
+                <p>Salesforce's commitment to AI, particularly with innovations like Agentforce, resonates deeply with my own convictions about the future of CRM. I believe AI will exponentially multiply the already immense power of the Salesforce platform, unlocking unprecedented levels of customer understanding and operational excellence. I've actively explored AI applications, even leading a university project on generative/predictive AI use cases, and I am eager to be at the forefront of integrating these technologies to deliver even greater value to Salesforce customers. Salesforce is a truly future-oriented, sustainable, and promising company, and I am convinced it will continue to play a pivotal role in the transformation of the current economic landscape.</p>
+                <p>I believe Salesforce needs people like me – individuals who not only possess deep technical and industry expertise but can also act as trusted advisors, explaining the multifaceted benefits of the platform in a tailored and relatable manner. My seven years of working alongside your colleagues have provided me with a unique perspective on how to best articulate Salesforce's value proposition to automotive clients. I am confident I can hit the ground running, contribute to your team's renowned spirit, and help architect solutions that drive tangible success for your customers.</p>
+            </div>
+        </div>
+
+        <div class="closing">
+            <p>
+                <span class="lang-element" lang="de">Die Möglichkeit, unsere Zusammenarbeit zu vertiefen und meine Begeisterung und Erfahrung in Ihr Team einzubringen, würde mich sehr freuen. Ich bin gespannt darauf, Ihnen weiter zu demonstrieren, wie meine Fähigkeiten und meine Leidenschaft zum anhaltenden Erfolg von Salesforce beitragen und Ihren Kunden in der Automobilindustrie helfen können, neue Wege zu beschreiten. Vielen Dank für die Berücksichtigung meiner Bewerbung. Ich freue mich darauf, bald von Ihnen zu hören.</span>
+                <span class="lang-element" lang="en" style="display:none;">The opportunity to deepen our collaboration and bring my enthusiasm and experience to your team is something I would be very excited about. I am eager to further demonstrate how my skills and passion can contribute to Salesforce's continued success and help your automotive clients blaze new trails. Thank you for considering my application. I look forward to hearing from you soon.</span>
+            </p>
+        </div>
+
+        <div class="signature-block">
+            <p>
+                <span class="lang-element" lang="de">Mit freundlichen Grüßen,</span>
+                <span class="lang-element" lang="en" style="display:none;">Sincerely,</span>
+            </p>
+            <img src="image_c3c611.png" alt="Unterschrift Steffen Koller" class="mt-2">
+            <p>Steffen Koller</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'de'; 
+
+        function toggleLanguage() {
+            const newLang = currentLang === 'de' ? 'en' : 'de';
+            const elementsToToggle = document.querySelectorAll('.lang-element');
+            
+            elementsToToggle.forEach(el => {
+                if (el.getAttribute('lang') === newLang) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+            
+            document.documentElement.lang = newLang;
+            if (newLang === 'de') {
+                document.title = 'Motivationsschreiben - Steffen Koller';
+            } else {
+                document.title = 'Cover Letter - Steffen Koller';
+            }
+            currentLang = newLang;
+        }
+
+        function preparePrint() {
+            const elementsToPrint = document.querySelectorAll('.lang-element');
+            elementsToPrint.forEach(el => {
+                if (el.getAttribute('lang') === currentLang) {
+                    el.classList.add('active-lang-print');
+                    el.style.display = ''; 
+                } else {
+                    el.classList.remove('active-lang-print');
+                    el.style.display = 'none'; 
+                }
+            });
+            window.print();
+        }
+
+        function initializeLanguage() {
+            currentLang = 'de'; 
+            const elements = document.querySelectorAll('.lang-element');
+            elements.forEach(el => {
+                if (el.getAttribute('lang') === 'de') {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+            document.documentElement.lang = 'de';
+            document.title = 'Motivationsschreiben - Steffen Koller';
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
+    </script>
+
+</body>
+</html>
 
