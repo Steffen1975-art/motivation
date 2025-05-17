@@ -12,48 +12,58 @@
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
             background-color: #f3f4f6;
-            line-height: 1.6; /* Verbesserte Lesbarkeit für längere Texte */
+            line-height: 1.6; 
         }
 
         .letter-container {
-            max-width: 210mm; /* A4 Breite */
-            min-height: 297mm; /* A4 Höhe für Druck-Layout-Orientierung */
+            max-width: 210mm; 
+            min-height: 297mm; 
             margin: 2rem auto;
-            padding: 25mm 20mm; /* Standard-Brief Ränder */
+            padding: 25mm 20mm; 
             background-color: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            color: #374151; /* Standard Textfarbe (etwas dunkleres Grau) */
+            color: #374151; 
         }
 
-        /* Farben angelehnt an Salesforce CI */
+        .letterhead { /* Angepasster Briefkopf */
+            margin-bottom: 1.5rem; /* Etwas weniger Abstand nach unten */
+        }
+
         .letterhead h1 {
-            color: #0070D2; /* Salesforce Blau für den Namen */
-            font-size: 1.75rem; /* 28px */
+            color: #0070D2; 
+            font-size: 1.75rem; 
             margin-bottom: 0.25rem;
+            font-weight: 700; /* Explizit fett */
         }
 
         .letterhead p {
-            font-size: 0.875rem; /* 14px */
-            color: #4B5563; /* Dunkelgrau für Kontaktdetails */
+            font-size: 0.875rem; 
+            color: #4B5563; 
             margin-bottom: 0.125rem;
         }
         
-        .recipient-address p, .date p {
-            font-size: 0.9rem; /* 14.4px */
+        .date-block { /* Neuer Block für das Datum */
+            text-align: right;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem; /* Abstand zur Empfängeradresse */
+        }
+
+        .recipient-address-block p { /* Empfängeradresse */
+            font-size: 0.9rem; 
             margin-bottom: 0.1rem;
         }
 
         .subject-line {
             font-weight: 600;
-            color: #001639; /* Salesforce Dunkelblau */
+            color: #001639; 
             margin-top: 1.5rem;
             margin-bottom: 1rem;
-            font-size: 1.1rem; /* 17.6px */
+            font-size: 1.1rem; 
         }
 
         .letter-body p {
             margin-bottom: 1rem;
-            font-size: 0.95rem; /* 15.2px */
+            font-size: 0.95rem; 
         }
 
         .salutation, .closing {
@@ -64,7 +74,7 @@
             margin-top: 2rem;
         }
         .signature-block img {
-            height: 40px; /* Höhe der Unterschrift */
+            height: 40px; 
             margin-bottom: 0.25rem;
         }
         .signature-block p {
@@ -82,7 +92,7 @@
         }
 
         .action-button {
-            background-color: #0070D2; /* Salesforce Blau */
+            background-color: #0070D2; 
             color: white;
             font-weight: bold;
             padding: 0.5rem 1rem;
@@ -97,7 +107,7 @@
             cursor: pointer;
         }
         .action-button:hover {
-            background-color: #005FB8; /* Dunkleres Salesforce Blau */
+            background-color: #005FB8; 
         }
 
         @media print {
@@ -105,11 +115,11 @@
                 background-color: white;
                 margin: 0;
                 padding: 0;
-                font-size: 10pt; /* Angepasste Schriftgröße für Druck */
+                font-size: 10pt; 
             }
             .letter-container {
                 margin: 0 auto;
-                padding: 20mm 15mm; /* Druckränder */
+                padding: 20mm 15mm; 
                 box-shadow: none;
                 max-width: 100%;
                 min-height: 0; 
@@ -117,8 +127,8 @@
             .button-container {
                 display: none !important;
             }
-            .letter-body p, .salutation, .closing, .recipient-address p, .date p, .subject-line, .signature-block p {
-                font-size: 10pt !important; /* Konsistente Schriftgröße im Druck */
+            .letter-body p, .salutation, .closing, .recipient-address-block p, .date-block p, .subject-line, .signature-block p {
+                font-size: 10pt !important; 
             }
             .letterhead h1 {
                 font-size: 16pt !important;
@@ -152,20 +162,22 @@
     </div>
 
     <div class="letter-container">
-        <div class="letterhead mb-8">
+        <div class="letterhead">
             <h1>Steffen Koller</h1>
             <p><span class="lang-element" lang="de">Kehlstraße 3 | 73257 Köngen</span><span class="lang-element" lang="en" style="display:none;">Kehlstrasse 3 | 73257 Koengen</span></p>
             <p>+49 176 105 197 03 | steffen.s.koller@gmail.com</p>
         </div>
 
-        <div class="date mb-6">
-            <p><span class="lang-element" lang="de">17. Mai 2025</span><span class="lang-element" lang="en" style="display:none;">May 17, 2025</span></p>
+        <div class="date-block">
+            <p><span class="lang-element" lang="de">Köngen, den 17. Mai 2025</span><span class="lang-element" lang="en" style="display:none;">Koengen, May 17, 2025</span></p>
         </div>
 
-        <div class="recipient-address mb-6">
+        <div class="recipient-address-block mb-6">
             <p>Salesforce Recruiting Team</p>
-            <p>(<span class="lang-element" lang="de">Adresse von Salesforce</span><span class="lang-element" lang="en" style="display:none;">Salesforce Address</span>)</p>
-            <p>(<span class="lang-element" lang="de">Ort, PLZ</span><span class="lang-element" lang="en" style="display:none;">City, Postal Code</span>)</p>
+            <p><span class="lang-element" lang="de">[Abteilung oder Name des Personalverantwortlichen, falls bekannt]</span><span class="lang-element" lang="en" style="display:none;">[Department or Hiring Manager Name, if known]</span></p>
+            <p><span class="lang-element" lang="de">[Salesforce Straße und Hausnummer]</span><span class="lang-element" lang="en" style="display:none;">[Salesforce Street Address]</span></p>
+            <p><span class="lang-element" lang="de">[Salesforce PLZ und Stadt]</span><span class="lang-element" lang="en" style="display:none;">[Salesforce City, Postal Code]</span></p>
+            <p><span class="lang-element" lang="de">[Land, falls nicht Deutschland]</span><span class="lang-element" lang="en" style="display:none;">[Country, if not Germany]</span></p>
         </div>
 
         <div class="subject-line">
@@ -273,4 +285,3 @@
 
 </body>
 </html>
-
