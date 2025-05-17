@@ -25,15 +25,15 @@
             color: #374151; 
         }
 
-        .letterhead { /* Angepasster Briefkopf */
-            margin-bottom: 1.5rem; /* Etwas weniger Abstand nach unten */
+        .letterhead { 
+            margin-bottom: 1.5rem; 
         }
 
         .letterhead h1 {
             color: #0070D2; 
             font-size: 1.75rem; 
             margin-bottom: 0.25rem;
-            font-weight: 700; /* Explizit fett */
+            font-weight: 700; 
         }
 
         .letterhead p {
@@ -42,13 +42,13 @@
             margin-bottom: 0.125rem;
         }
         
-        .date-block { /* Neuer Block für das Datum */
+        .date-block { 
             text-align: right;
             font-size: 0.9rem;
-            margin-bottom: 1.5rem; /* Abstand zur Empfängeradresse */
+            margin-bottom: 2rem; /* Mehr Abstand zur Empfängeradresse */
         }
 
-        .recipient-address-block p { /* Empfängeradresse */
+        .recipient-address-block p { 
             font-size: 0.9rem; 
             margin-bottom: 0.1rem;
         }
@@ -56,14 +56,15 @@
         .subject-line {
             font-weight: 600;
             color: #001639; 
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
+            margin-top: 2rem; /* Mehr Abstand nach Empfängeradresse */
+            margin-bottom: 1.5rem; /* Mehr Abstand zum Textkörper */
             font-size: 1.1rem; 
         }
 
         .letter-body p {
             margin-bottom: 1rem;
             font-size: 0.95rem; 
+            text-align: justify; /* Blocksatz für den Fließtext */
         }
 
         .salutation, .closing {
@@ -71,7 +72,7 @@
             font-size: 0.95rem;
         }
         .signature-block {
-            margin-top: 2rem;
+            margin-top: 2.5rem; /* Etwas mehr Platz für die Unterschrift */
         }
         .signature-block img {
             height: 40px; 
@@ -189,8 +190,8 @@
 
         <div class="salutation">
             <p>
-                <span class="lang-element" lang="de">Sehr geehrtes Salesforce Recruiting-Team,</span>
-                <span class="lang-element" lang="en" style="display:none;">Dear Salesforce Hiring Team,</span>
+                <span class="lang-element" lang="de">Liebe Salesforce Community,</span>
+                <span class="lang-element" lang="en" style="display:none;">Dear Salesforce Community,</span>
             </p>
         </div>
 
